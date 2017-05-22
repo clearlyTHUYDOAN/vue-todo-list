@@ -3,17 +3,41 @@
 <template>
   <div id="app">
     <img src="./assets/logo.png">
-    <hello></hello>
+    <todo-list v-bind:todos='todos'> <!--v-bind is a directive. Similar to props in React?-->
+    </todo-list> <!--Uses css style component names as opposed to camelCase like React uses.-->
   </div>
 </template>
 
 <script>
-import Hello from './components/Hello'
+import TodoList from './components/TodoList'
 
 export default {
-  name: 'app',
+  name: 'app', // Main or 'parent' component.
   components: {
-    Hello
+    TodoList // Needs to match the import line.
+  },
+  /* Components' available data to their respective templates using a data function.
+  This function returns an object with the properties intended for the template. */
+  data () {
+    return {
+      todos: [{
+        title: 'Todo A',
+        project: 'Project A',
+        done: false
+      }, {
+        title: 'Todo B',
+        project: 'Project B',
+        done: true
+      }, {
+        title: 'Todo C',
+        project: 'Project C',
+        done: false
+      }, {
+        title: 'Todo D',
+        project: 'Project D',
+        done: false
+      }]
+    }
   }
 }
 </script>
