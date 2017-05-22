@@ -7,14 +7,9 @@
 <template>
   <div>
   <h3>Todo List</h3>
-    <ul>
-        <li> Buy bread. </li> 
-        <li> Check if salami and chicken are still good. </li> 
-        <li> Prepare for Prodigy Game interview. </li> 
-    </ul> 
     <p>Completed Tasks: {{todos.filter(todo => {return todo.done === true}).length}}</p> <!--Return in curly: 'Avoid using JS keyword as prop name.-->
     <p>Pending Tasks: {{todos.filter(todo => {return todo.done === false}).length}}</p>
-    <todo v-for='todo in todos' v-bind:todo='todo' :key='todo.title'></todo> <!--Needs keys like React does.-->
+    <todo v-on:delete-todo="deleteTodo" v-for='todo in todos' v-bind:todo='todo' :key='todo.title'></todo> <!--Needs keys like React does.-->
   </div>
 </template>
 
@@ -26,7 +21,12 @@ export default {
   components: {
     Todo
   },
-  props: ['todos'] // Has to match what we passed it as in the main component. Also have to declare the properties this will accept.
+  props: ['todos'], // Has to match what we passed it as in the main component. Also have to declare the properties this will accept.
+  deleteTodo (todo) {
+    console.log('deleteTodo inside TodoList is firing.')
+    const todoIndex = this.todos.indexOf(todo)
+    this.todos.splice(todoIndex, 1)
+  }
 }
 
 </script>
