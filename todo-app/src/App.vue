@@ -1,3 +1,5 @@
+<!--This is how you comment in a vue file. vue uses html like syntax as opposed to React which uses Javascript.-->
+
 <template>
   <div id="app">
     <img src="./assets/logo.png">
