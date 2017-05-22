@@ -9,7 +9,7 @@
   <h3>Todo List</h3>
     <p>Completed Tasks: {{todos.filter(todo => {return todo.done === true}).length}}</p> <!--Return in curly: 'Avoid using JS keyword as prop name.-->
     <p>Pending Tasks: {{todos.filter(todo => {return todo.done === false}).length}}</p>
-    <todo v-on:delete-todo="deleteTodo" v-for='todo in todos' v-bind:todo='todo' :key='todo.title'></todo> <!--Needs keys like React does.-->
+    <todo v-on:complete-todo="completeTodo" v-on:delete-todo="deleteTodo" v-for='todo in todos' v-bind:todo='todo' :key='todo.title'></todo> <!--Needs keys like React does.-->
   </div>
 </template>
 
@@ -26,6 +26,11 @@ export default {
     console.log('deleteTodo inside TodoList is firing.')
     const todoIndex = this.todos.indexOf(todo)
     this.todos.splice(todoIndex, 1)
+  },
+  completeTodo (todo) {
+    console.log('completeTodo inside TodoList is firing.')
+    const todoIndex = this.todos.indexOf(todo)
+    this.todos[todoIndex].done = true
   }
 }
 

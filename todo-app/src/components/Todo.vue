@@ -64,6 +64,10 @@ export default {
     deleteTodo (todo) { // Once we click on the delete icon, an event will be emitted and propagated to the parent component which will then delete it.
       console.log('deleteTodo inside Todo is firing.')
       this.$emit('delete-todo', todo)
+    },
+    completeTodo (todo) {
+      console.log('completeTodo inside Todo is firing.')
+      this.$emit('complete-todo', todo)
     }
   }
 }

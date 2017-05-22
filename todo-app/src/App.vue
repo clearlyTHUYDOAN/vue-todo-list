@@ -10,16 +10,28 @@ A Vue.js directive can only appear in the form of a prefixed HTML attribute-->
     <img src="./assets/logo.png">
     <todo-list v-bind:todos='todos'> <!--v-bind is a directive. This here is similar to props in React.-->
     </todo-list> <!--Uses css style component names as opposed to camelCase like React uses.-->
+    <create-todo v-on:add-todo="addTodo"></create-todo>
   </div>
 </template>
 
 <script>
 import TodoList from './components/TodoList'
+import CreateTodo from './components/CreateTodo'
 
 export default {
   name: 'app', // Main or 'parent' component.
   components: {
-    TodoList // Needs to match the import line.
+    TodoList, // Needs to match the import line.
+    CreateTodo
+  },
+  methods: {
+    addTodo (title) {
+      console.log(this.todos)
+      this.todos.push({
+        title,
+        done: false
+      })
+    }
   },
   /* Components' available data to their respective templates using a data function.
   This function returns an object with the properties intended for the template. */
