@@ -48,7 +48,7 @@
 
 export default {
   // name: 'todo',
-  props: ['todo'],
+  props: ['todo', 'test'],
   data () {
     return {
       isEditing: false
@@ -63,6 +63,7 @@ export default {
     },
     deleteTodo (todo) { // Once we click on the delete icon, an event will be emitted and propagated to the parent component which will then delete it.
       console.log('deleteTodo inside Todo is firing.')
+      console.log(this)
       this.$emit('delete-todo', todo)
     },
     completeTodo (todo) {

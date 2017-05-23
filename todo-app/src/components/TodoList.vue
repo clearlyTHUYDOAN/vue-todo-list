@@ -23,7 +23,7 @@ export default {
   },
   props: ['todos'], // Has to match what we passed it as in the main component. Also have to declare the properties this will accept.
   deleteTodo (todo) {
-    console.log('deleteTodo inside TodoList is firing.')
+    console.log('deleteTodo inside TodoList is firing.') // Doesn't fire because emit doesn't work?
     const todoIndex = this.todos.indexOf(todo)
     this.todos.splice(todoIndex, 1)
   },

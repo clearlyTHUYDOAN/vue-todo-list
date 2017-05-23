@@ -52,7 +52,7 @@ export default {
         console.log('We are inside the if statement.')
         const title = this.titleText
         const project = this.projectText
-        this.$emit('create-todo', { // Emits don't work?
+        this.$emit('create-todo', { // Emit doesn't work...
           title,
           project,
           done: false
